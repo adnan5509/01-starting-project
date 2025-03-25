@@ -1,6 +1,6 @@
 <div>
   <button (click)="showClickedUserName()">
-    <img [src]="userAvatarImage" [alt]="randomUser.name" />
-    <span>{{ randomUser.name }}</span>
+    <img [src]="userAvatarImage()" [alt]="randomUser().name" />
+    <span>{{ randomUser().name }}</span>
   </button>
 </div>
