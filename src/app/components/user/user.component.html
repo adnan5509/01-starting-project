@@ -1,6 +1,6 @@
 <div>
   <button (click)="showClickedUserName()">
-    <img [src]="userAvatarImage" [alt]="userName" />
-    <span>{{ userName }}</span>
+    <img [src]="userAvatarImage()" [alt]="userName()" />
+    <span>{{ userName() }}</span>
   </button>
 </div>

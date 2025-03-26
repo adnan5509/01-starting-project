@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, input, Input, signal } from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
 
 
@@ -12,16 +12,13 @@ import { DUMMY_USERS } from '../../dummy-users';
 })
 export class UserComponent {
 
-  @Input({required: true}) userName!: string;  
-  @Input({required: true}) userAvatar!: string;  
+  userName = input.required<string>();
+  userAvatar = input.required<string>();
 
+  userAvatarImage = computed(() => 'assets/users/'+this.userAvatar());
 
-  get userAvatarImage ()
-  {
-    return 'assets/users/'+this.userAvatar;
-  }
 
   showClickedUserName() {
-    alert('User name is: ' + this.userName);
+    alert('User name is: ' + this.userName());
   }
 }
