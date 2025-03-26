@@ -1,8 +1,6 @@
-import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
-import { DUMMY_USERS } from '../../dummy-users';
-
-
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from '../model/user.model';
+// Ensure the correct path to the User model
 @Component({
   selector: 'app-user',
   standalone: true,
