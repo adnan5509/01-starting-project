@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
 
 
@@ -11,16 +11,21 @@ import { DUMMY_USERS } from '../../dummy-users';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-
+  @Input({ required: true }) userId!: string;
   @Input({ required: true }) userName!: string;
   @Input({ required: true }) userAvatar!: string;
+  @Output() selectUser = new EventEmitter();
 
 
   get userAvatarImage() {
     return 'assets/users/' + this.userAvatar;
   }
 
-  showClickedUserName() {
-    alert('User name is: ' + this.userName);
+  /**
+   * Emits the `selectUser` event with the current `userId`.
+   * This method is triggered when a user is selected.
+   */
+  onSelectUser() {
+    this.selectUser.emit(this.userId);
   }
 }

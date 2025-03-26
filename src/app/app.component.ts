@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  users = DUMMY_USERS;
 
+  users = DUMMY_USERS;
+  onSelectUser(userId: string) {
+    alert('User selected: ' + userId);
+  }
 }
