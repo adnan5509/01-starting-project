@@ -11,17 +11,18 @@ import { DUMMY_USERS } from '../../dummy-users';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  @Input({ required: true }) userId!: string;
-  @Input({ required: true }) userName!: string;
-  @Input({ required: true }) userAvatar!: string;
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
   @Output() selectUser = new EventEmitter<string>();
 
-
   get userAvatarImage() {
-    return 'assets/users/' + this.userAvatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
-    this.selectUser.emit(this.userId);
+    this.selectUser.emit(this.user.id);
   }
 }

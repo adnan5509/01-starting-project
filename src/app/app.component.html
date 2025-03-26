@@ -3,8 +3,7 @@
 <main>
   <ul id="users">
     <li *ngFor="let user of users">
-      <app-user [userAvatar]="user.avatar" [userName]="user.name" [userId]="user.id"
-        (selectUser)="onSelectUser($event)" />
+      <app-user [user]="user" (selectUser)="onSelectUser($event)" />
     </li>
   </ul>
 
