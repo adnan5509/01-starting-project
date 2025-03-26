@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, Input, signal } from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
 
 
@@ -12,10 +12,16 @@ import { DUMMY_USERS } from '../../dummy-users';
 })
 export class UserComponent {
 
-  randomUser = signal(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)]);
-  userAvatarImage = computed(() => 'assets/users/' + this.randomUser().avatar)
+  @Input({required: true}) userName!: string;  
+  @Input({required: true}) userAvatar!: string;  
+
+
+  get userAvatarImage ()
+  {
+    return 'assets/users/'+this.userAvatar;
+  }
 
   showClickedUserName() {
-    this.randomUser.set(DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)]);
+    alert('User name is: ' + this.userName);
   }
 }
