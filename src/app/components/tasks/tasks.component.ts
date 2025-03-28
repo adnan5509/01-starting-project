@@ -3,6 +3,7 @@ import { UserTaskComponent } from "../user-task/user-task.component";
 import { User } from '../model/user.model';
 import { dummyTasks } from '../dummy-tasks';
 import { AddTaskComponent } from "../add-task/add-task.component";
+import { NewTaskData } from '../model/newTaskData.model';
 
 @Component({
   selector: 'app-tasks',
@@ -30,4 +31,18 @@ export class TasksComponent {
     this.tasks = this.tasks.filter(task => task.id !== $event);
   }
 
+  closeAddTaskDialog() {
+    this.showAddTask = false;
+  }
+
+  submitAddedTask($event: NewTaskData) {
+    this.tasks.push({
+      id: Math.random().toString(),
+      title: $event.title,
+      summary: $event.summary,
+      dueDate: $event.dueDate,
+      userId: this.selectedUser!.id
+    });
+    this.showAddTask = false;
+  }
 }

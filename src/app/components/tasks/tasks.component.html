@@ -1,5 +1,5 @@
 @if (showAddTask) {
-<app-add-task></app-add-task>
+<app-add-task (cancel)="closeAddTaskDialog()" (addTask)="submitAddedTask($event)"></app-add-task>
 }
 <section id="tasks">
     <header>
