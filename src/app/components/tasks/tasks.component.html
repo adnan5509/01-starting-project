@@ -1,5 +1,7 @@
+@if (showAddTask) {
+<app-add-task></app-add-task>
+}
 <section id="tasks">
-
     <header>
         <h2>{{selectedUser?.name}}'s Tasks </h2>
     </header>
@@ -9,7 +11,7 @@
     <ul id="tasks">
         @for(task of userTasks; track task.id) {
         <li>
-            <app-user-task [task]="task"></app-user-task>
+            <app-user-task (completeTask)="completeTask($event)" [task]="task"></app-user-task>
         </li>
         }
     </ul>

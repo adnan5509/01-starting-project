@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../model/task.model';
 
 @Component({
@@ -11,9 +11,10 @@ import { Task } from '../model/task.model';
 export class UserTaskComponent {
 
   @Input() task!: Task;
+  @Output() completeTask = new EventEmitter<string>();
 
-  completeTask() {
-    throw new Error('Method not implemented.');
+  onCompleteTask() {
+    this.completeTask.emit(this.task.id);
   }
 
 
