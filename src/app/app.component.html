@@ -10,7 +10,7 @@
   </ul>
 
   @if (selectedUser) {
-  <app-task *ngIf="selectedUser" [userName]="selectedUser.name" />
+  <app-tasks [selectedUser]="selectedUser" />
   }@else{
   <h2>Select a User to see its tasks</h2>
   }
