@@ -36,7 +36,7 @@ export class TasksComponent {
   }
 
   submitAddedTask($event: NewTaskData) {
-    this.tasks.push({
+    this.tasks.unshift({
       id: Math.random().toString(),
       title: $event.title,
       summary: $event.summary,
