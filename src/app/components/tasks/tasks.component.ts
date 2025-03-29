@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { UserTaskComponent } from "../user-task/user-task.component";
-import { User } from '../model/user.model';
-import { dummyTasks } from '../dummy-tasks';
+import { User } from '../user/user.model';
+import { dummyTasks } from '../../dummy-tasks';
 import { AddTaskComponent } from "../add-task/add-task.component";
-import { NewTaskData } from '../model/newTaskData.model';
+import { NewTaskData } from '../add-task/newTaskData.model';
 
 @Component({
   selector: 'app-tasks',
