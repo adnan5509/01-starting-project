@@ -28,10 +28,6 @@ export class TasksComponent {
     this.showAddTask = !this.showAddTask;
   }
 
-  completeTask($event: string) {
-    this.tasksService.completeTask($event);
-  }
-
   closeAddTaskDialog() {
     this.showAddTask = false;
   }
