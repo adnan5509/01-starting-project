@@ -4,6 +4,7 @@ import { User } from '../user/user.model';
 import { dummyTasks } from '../../dummy-tasks';
 import { AddTaskComponent } from "./add-task/add-task.component";
 import { NewTaskData } from './add-task/newTaskData.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -18,9 +19,10 @@ export class TasksComponent {
   @Input() selectedUser?: User;
   showAddTask = false;
 
+  constructor(private tasksService: TasksService) { }
 
   get userTasks() {
-    return this.tasks.filter(task => task.userId === this.selectedUser?.id);
+    return this.tasksService.selectedUserTasks(this.selectedUser?.id!);
   }
 
   onAddTask() {
@@ -28,7 +30,7 @@ export class TasksComponent {
   }
 
   completeTask($event: string) {
-    this.tasks = this.tasks.filter(task => task.id !== $event);
+    this.tasksService.completeTask($event);
   }
 
   closeAddTaskDialog() {
@@ -36,13 +38,7 @@ export class TasksComponent {
   }
 
   submitAddedTask($event: NewTaskData) {
-    this.tasks.unshift({
-      id: Math.random().toString(),
-      title: $event.title,
-      summary: $event.summary,
-      dueDate: $event.dueDate,
-      userId: this.selectedUser!.id
-    });
+    this.tasksService.submitNewTask($event, this.selectedUser?.id!);
     this.showAddTask = false;
   }
 }

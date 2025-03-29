@@ -18,6 +18,4 @@ export class UserTaskComponent {
   onCompleteTask() {
     this.completeTask.emit(this.task.id);
   }
-
-
 }
