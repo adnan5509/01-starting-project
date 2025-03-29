@@ -14,9 +14,8 @@ import { TasksService } from './tasks.service';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-
   tasks = dummyTasks;
-  @Input() selectedUser?: User;
+  @Input({required: true}) selectedUser!: User;
   showAddTask = false;
 
   constructor(private tasksService: TasksService) { }
@@ -34,11 +33,6 @@ export class TasksComponent {
   }
 
   closeAddTaskDialog() {
-    this.showAddTask = false;
-  }
-
-  submitAddedTask($event: NewTaskData) {
-    this.tasksService.submitNewTask($event, this.selectedUser?.id!);
     this.showAddTask = false;
   }
 }
